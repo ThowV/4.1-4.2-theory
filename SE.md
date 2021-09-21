@@ -73,9 +73,9 @@ This way you can start with a small piece of functionality and iterate on it, ev
 - OpenUP, Open Unified Process, is an open-source framework maintained by the Eclipse Foundation;
 - RUP-Op-Maat is an elaboration of RUP and is owned by Ordina;
 
-RUP has four phases:
+RUP has four phases which are repeated over and over which ultimately delivers a potentially shippable product incrament:
 
-- The inception phase **(incremental)**:
+- The inception phase:
 	+ Scope all the work, initial budget estimates are made;
 	+ Align visions;
 	+ Identify risks and global planning;
@@ -86,7 +86,7 @@ RUP has four phases:
 		* Use Case Model;
 		* Acceptance Plan;
 		* Global Software Development Plan (SDP);
-- The elaboration phase **(incremental)**:
+- The elaboration phase:
 	+ Prove the technical feasibility and validate the architecture;
 	+ Create a design/proof-of-concept;
 	+ Produces the following artifacts:
@@ -95,20 +95,22 @@ RUP has four phases:
 		* SAD;
 		* Test plan;
 		* Development and testing environment;
-- The construction phase **(iterative)**:
+- The construction phase:
 	+ Focus on implementation;
 	+ Do this in iterations/sprints;
-- The transition phase **(incremental)**:
+- The transition phase:
 	+ Focus on the deployment;
 	+ Hand the product over to maintenance;
-	
-### 3.2 Agile framework 
+
+## 4. Software process model: Agile
+
+Agile is seen as an incremental AND iterative process.
 
 Agile development has analysis, design, implementation and testing in every iteration/sprint as opposed to RUP. Every sprint delivers a small product.
 
 Agile uses a conversational approach where requirements are continuously negotiated during development. This way, risks or changes are identified at the start of a sprint which makes their impact minimal.
 
-#### 3.2.1 Agile problems
+### 4.1 Agile problems
 
 Agile is good in many ways but has a few problems:
 
@@ -121,3 +123,128 @@ Agile is good in many ways but has a few problems:
 - Product owner must manage the interests of the different stakeholders as they'll be tempted to keep demanding new functionality;
 - Quality might lack as the product is a moving target with a 'code and fix' approach;
 - Less documentation as 'the code' = 'the design'. This results in a slow start for newcomers, inefficient maintenance when there's a problem and a loss of the big picture;
+
+### 4.2 Scrum framework
+
+Scrum is a framework for organizing and managing work. It has a limited scope where the focus lies on self-organization of teams. The word **framework** means that you have to adapt Scrum to your specific situation, which results in a version of Scrum that is uniquely yours.
+
+The word Scrum comes from the comparison with playing rugby. In rugby the whole team takes the ball forward, they scrum, as opposed to a relay race where a baton is passed on from player to player which is defined as waterfall.
+
+Scrum, unlike RUP, doesn't say how to do:
+
+- The requirements analysis;
+- The business alignment;
+- The project planning;
+- The cost estimation;
+- The definition of scope;
+- How to put together a team;
+- The architecture;
+- The definition of the first sprint;
+
+Also, Scrum doesn't have an ending, you either continue with the next sprint or stop the iteration.
+
+#### 4.2.1 Scrum pros and cons
+
+Scrum has a few pros:
+
+- Scrum, like any Agile framework, creates accountability;
+- Has a clear definition of results;
+- Supports a change of plans due to constant renegotiation;
+- Allows for immediate feedback;
+- Has a focus on the business value with an efficient use of time and money;
+
+Scrum also has a few cons, which are listed in the Agile problems in chapter 4.1.
+
+#### 4.2.2 Scrum roles
+
+Scrum defines a few roles:
+
+- The product owner:
+	+ Collaborates with the stakeholders;
+	+ Relays to the development team;
+	+ Defines and is responsible for the **product backlog**:
+		* Defines the project scope;
+		* Explains which features and functionality to build;
+		* Defines priority for each feature;
+	+ Determines a release date and the content in that release;
+	+ Adjusts features and priority in every iteration as fit;
+	+ Accepts or rejects work results;
+- The Scrum master:
+	+ Responsible for enacting the Scrum values and practices aka the **Scrum ceremonies**;
+	+ Helps the team to understand and use self-organization;
+	+ Removes roadblocks;
+	+ Makes the **Scrum ceremonies** efficient and effective;
+	+ Shields the team from external interferences;
+- The Scrum team:
+	+ A cross-functional collection of programmers, testers, designers, etc;
+	+ Available full-time and preferably in the same room;
+	+ Are self-organizing in the sense that no titles are given;
+	
+#### 4.2.3 Scrum ceremonies
+
+Scrum has a few ceremonies that the Scrum master should enforce:
+
+- The sprint planning:
+	+ The product owner submits a set of features that are collected into a prioritzed list (**the product backlog**);
+	+ The team selects items from the product backlog they believe they can commit to completing (**the sprint backlog**):
+		* User stories can be broken down into tasks;
+		* Tasks are estimated in hours (1-16 hours);
+		* Estimation is done by the whole team collaboratively;
+	+ No changes are made during a sprint;
+	+ A sprint planning looks like the following:
+		* Define a sprint goal and present the backlog;
+		* Re-prioritize, re-estimate, split or combine stories using cards;
+		* Do a task breakdown (without PO);
+		* Estimate the velocity, draw the line (without PO);
+- The daily standup/daily Scrum meeting:
+	+ Takes about 15 minutes;
+	+ Shows the Scrum board for an actual status;
+	+ Is more about the team's current status as opposed to problem solving:
+		* Everyone's allowed to be present;
+		* Only the team members, Scrum master and product owner can talk;
+	+ Helps to avoid other unnecessary meetings;
+	+ Everyone answers three questions:
+		* What did I do yesterday?
+		* What will I do today?
+		* Is anything in my way?
+- The sprint demo & review:
+	+ The team presents what it accomplished during the sprint;
+	+ Typically takes the form of a demo of new features or underlying architecture;
+	+ Is informal, prep takes a maximum of 2 hours and uses no slides;
+	+ The whole team participates;
+	+ Management, customers and developers from other projects are invited;
+	+ The team only demonstrates tested usable pieces of code/software as they're completed stories on the **sprint backlog**;
+- The sprint retrospective:
+	+ A separate meeting for the Scrum team only;
+	+ The process is inspected and adapted where fit;
+	+ Typically done after every sprint of 1~2 weeks;
+	+ Discusses what is and isn't working;
+	+ Takes about 15~30 minutes;
+	+ Focus on a few improvements per sprint;
+	
+#### 4.2.4 Scrum artifacts
+
+The Scrum framework produces a few artifacts:
+
+- Product backlog:
+	+ Prioritizes items on priority;
+	+ Top items are small and detailed so they can be moved to the next sprint;
+	+ Bottom items are small and have few details, they need to be iterated on;
+	+ As Agile is a **conversational approach** the product backlog items are refined through a series of conversations with stakeholders, the PO and developers;
+	+ The product backlog consists of users stories that presents a small use case in the form of a user story: "As a X, In want to Y, so that I Z";
+	+ Each item in the product backlog has a number of story points that indicate a certain complexity, represented by the Fibonacci sequence for example;
+	+ Story point estimation is done using planning poker:
+		* Estimates are done by the people who're going to do the work, but all team members attend;
+		* Different viewpoints will be discussed and result in better estimates;
+		* If a feature/item is deemed to large it has to be split into smaller ones;
+		* A round of planning poker goes as follows:
+			- Moderator reads the description of a user story;
+			- Members ask questions to the product owner;
+			- Each member picks a card that represents his/her estimate in story points;
+			- All members show the cards simultaneously;
+			- A group discussion takes place where the members with highest and lowest numbers explain themselves;
+			- If there's no agreement made another round takes place;
+- Sprint backlog:
+	+ Has a sprint goal which is a short statement of what the work will be focuses on during the sprint;
+	+ Is a snapshot of stories from the product backlog;
+- Sprint burndown chart: A chart that is displays the amount of story points finished on each day;
