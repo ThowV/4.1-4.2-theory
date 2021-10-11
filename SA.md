@@ -144,3 +144,190 @@ Requirements desire architecture. Architecture influences requirements:
     -   Different stakeholders will have different concerns;
     -   These requirements will often conflict with each other and the budget;
     -   Stakeholders will 'speak a different language';
+
+## 7. The Software Architecture Document (SAD)
+
+A Software Architecture Document (SAD) is a set of products which documents an architecture in a way that is understandable for stakeholders. It demonstrates that the architecture has met their concerns (requirements).
+
+Creating a SAD has its challenges:
+
+-   Different stakeholders need different things from the SAD;
+-   You never have enough time to fully document the architecture;
+-   You have to leave some areas undefined or vaguely defined without losing credibility;
+-   The SAD needs to capture design decisions and the rationale clearly without confusing readers with options;
+-   Some stakeholders are very knowledgeable, others are not;
+-   How much detail should you put in the SAD?;
+-   You need a "sales and marketing" document to convince stakeholders of your architecture's viability, fitness for purpose and cost-effectiveness;
+-   The SAD needs to be sufficiently detailed to unequivocally answer all the important decisions;
+-   You have to explain "why" and "so what" as well as just "what";
+-   At what point does the SAD become a design? Does that matter?;
+
+In order to cover these challenges a checklist is available:
+
+-   [ x ] Are all requirements documented?;
+-   [ x ] Are all key architectural decisions documented?;
+-   [ x ] Are all viewpoints from the chosen **viewpoint set** documented?
+-   [ x ] Does the SAD have the right abstraction level, given the skills of your stakeholders? In other words: Will it not confuse the stakeholders upon reading?;
+-   [ x ] Does the section of the SAD aimed at non-technical audiences avoid the use of technical jargon?;
+-   [ x ] Do you know how the SAD will be maintained?;
+-   [ x ] Have you provided a glossary of terms?;
+-   [ x ] Are there any issues requiring management attention?;
+
+## 8. Viewpoints, views and viewpoint sets
+
+Archictecture is about defining structures, not one, but many!:
+
+-   Functional structure: How does the application work?;
+-   Information structure: How does information flow through the application?;
+-   Process/concurrency structure: Synchronization, data sharing problems etc;
+-   Implementation structure: What frameworks/libraries are used?;
+
+An example of viewpoints would be the different views of a house as it's built:
+
+-   The salesperson wants a pretty picture where the house is finished;
+-   The electrician wants a map of all cables etc;
+-   The plumber wants a map of all pipes;
+-   The builders wants a blueprint with all measurements included;
+
+A view is a representation of the whole system, as seen by specific stakeholders who have specific concerns. By using multiple views we can explain to the different stakeholders how their concerns are met. Therefore views solve the problem that it is not possible to capture all the functional features (and quality properties) in a single model;
+
+One view consists of one or more viewpoints/models (diagrams, most common: UML) that represent it.
+
+A viewpoint set consists of multiple views. There are many standard viewpoint sets, a few of which are listed here:
+
+-   RUP 4+1;
+-   Rozanski & Woods (R&W);
+-   RM-ODP (ISO);
+-   SEI (CMU);
+-   Siemens;
+-   Garland & Anthony;
+
+This document will further explain RUP 4+1 and Rozanski & Woods (which is an extension of RUP 4+1).
+
+### 8.1 C4 Model
+
+A viewpoint can be described as any of the 4 zoom levels:
+
+-   Context: Describes the context of the application, typically by using a context diagram (so not UML);
+-   Container: An independent runnable/deployable part of the application. Documents the major technologies used and how the containers communicate;
+-   Component: Describes the components inside a container and what each of those components are, their responsibilities and the technology/implementation details;
+-   Code: Describes the code structure inside a component. Typically using class, sequence or activity diagrams;
+
+### 8.2 RUP 4+1 viewpoint set
+
+|                   |                        |                          |
+| ----------------- | ---------------------- | ------------------------ |
+| Logical Viewpoint |                        | Implementation Viewpoint |
+|                   | **Use-Case Viewpoint** |                          |
+| Process Viewpoint |                        | Deployment Viewpoint     |
+
+RUP 4+1 consists of 4 viewpoints + the **Use-Case Viewpoint**. The Use-Case Viewpoint is the base view and describes the use cases. These use cases are also known as functional scenario's and should cover all functional requirements using:
+
+-   Use Case Diagram(s);
+-   Use Case Descriptions;
+
+With the Use-Case Viewpoint as the base we can build upon this using the other 4 viewpoints. The first being the Logical Viewpoint.
+
+#### 8.2.1 Logical Viewpoint
+
+The Logical Viewpoint:
+
+-   Describes the functional structure and behavior of the system;
+-   Shows how the system will perform the functional scenario's;
+-   Fundamental pieces: Subsystems, components, dependencies and interfaces:
+    -   Component Diagram (UML);
+    -   Boxes-and-lines Diagram (informal);
+-   Use case realizations: Describe behavior by using sequence diagrams;
+-   More details:
+    -   Class Digram;
+    -   ERD;
+
+An example of a Logical Component Diagram would look like:
+
+![](https://c4model.com/img/bigbankplc-Components.png)
+
+Logical differs from physical architecture:
+
+-   Logical architecture: Abstract representation of components and their relations, without further specifying implementation, technology or enviroment;
+-   Physical architecture: Gives enough detail to decide what's the best technology (software, hardware, network) and may refer to implementation as well as deployment;
+
+#### 8.2.2 Implementation Viewpoint
+
+The Implementation Viewpoint describves the organization of the software modules and implementation details:
+
+-   Concerns of developers and testers;
+-   Organization of source code, package diagrams;
+-   Development environment;
+-   Frameworks, libraries, programming languages;
+-   Database engine, file structure;
+-   Middleware;
+
+#### 8.2.3 Process Viewpoint
+
+The Process Viewpoint is one of the least used viewpoints. It describes:
+
+-   The concurrent structure of the system;
+-   How concurrent execution is coordinated and controlled:
+    -   Processes & threads and their communication;
+    -   Shared resources and synchronization;
+    -   Scheduling aspects;
+
+The Process Viewpoint is visualized using any of the following diagrams:
+
+-   Activity diagram;
+-   Sequence diagram;
+-   State diagram;
+
+#### 8.2.4 Deployment Viewpoint
+
+The Deployment Viewpoint shows how the run-time entities are mapped on the execution platform. It maps the deployable components onto machines/processors. These deployable components can be any of the following:
+
+-   Hosting environment;
+-   Hardware configuration;
+-   Network configuration/protocols;
+-   Disk storage;
+-   ...
+
+### 8.3 Rozanski & Woods (R&W) viewpoint set
+
+First, we map our previously discussed jargon:
+
+| RUP 4+1                  | R&W                         |
+| ------------------------ | --------------------------- |
+| Use Case Viewpoint       | Context Viewpoint           |
+| Process Viewpoint        | Concurrency Viewpoint       |
+| Implementation Viewpoint | Development Viewpoint       |
+| Doployment Viewpoint     | Deployment Viewpoint        |
+|                          | (NEW) Information Viewpoint |
+|                          | (NEW) Operational Viewpoint |
+
+### 8.3.1 Context Viewpoint
+
+The Context Viewpoint maps relationships, dependencies and interactions between the system and its environment. It does so using any of the following diagrams:
+
+-   Context diagram;
+-   Swimlane diagram (process model);
+-   Use case diagram;
+-   User stories;
+
+### 8.3.2 Information Viewpoint
+
+The Information Viewpoint maps the way that the architecture stores, manipulates, manages and distributes information. It should answer questions around content, structure, ownership, transcation, latency, references and data migration. It also answers the following questions pertaining to data:
+
+-   How to keep data stored in different parts of the system consistent?;
+-   Distribution/replication: How to keep information synchronized in multiple places?;
+-   How to maintain relations? (partitioning);
+
+It does all of this using an Information Flow Diagram, Entity Relation Diagram or a DFD.
+
+### 8.3.3 Operational Viewpoint
+
+The Operational Viewpoint maps how the system will be operated, administered and supported in its production environment. It maps how to:
+
+-   Install, upgrade, migrate and back-out;
+-   Backup and restore data;
+-   Monitor and control:
+    -   Error notifications and logging;
+    -   Performance monitoring;
+-   Respond to problems using a support model;
+-   Install configuration and management;
