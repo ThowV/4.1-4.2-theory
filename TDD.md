@@ -232,3 +232,13 @@ public class SpacedDecorator implements StringLike {
     }
 }
 ```
+
+## 5 Test designs
+
+Testing takes time and is expensive. Therefore, you should choose wisely what to test and what not to test. Functionality that is going to be used often or that is critical to the product should be tested extensively, whilst functionality that is not going to be used as often should not be tested extensively or at all to save on costs.
+
+A test design is a collection of test cases that are picked in order to fit the budget. A test case consists of the following:
+
+-   Initial situation: Everything that should be setup before the test can take place;
+-   Action: The actions that have to take place (input, processing), generates an output;
+-   Comparison: The actual output is compared against the expected output;
