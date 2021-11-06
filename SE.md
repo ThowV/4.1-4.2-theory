@@ -329,7 +329,7 @@ Issues during the requirements process are the most important ones to rectify.
 
 ### 5.6 What a business rule is
 
-A business rule describe actions, definiations and handicaps that an organization establishes in order to reach their goals. A business role comes forth from company policy, the law or from branch standards. They are indipendant from products and systems but they do termine them.
+A business rule describes actions, definitions and handicaps that an organization establishes in order to reach their goals. A business rule comes forth from company policy, the law or from branch standards. They are indipendant from products and systems but they do determine them.
 
 Take a look at the following examples:
 
@@ -354,7 +354,7 @@ Instead of an interview with the stakeholders as mentioned in step 2 you might a
 -   Brainstorm with stakeholders;
 -   Study existing documentation;
 -   Send out questionnaires;
--   Analize the existing situation;
+-   Analyze the existing situation;
 -   Iterate on prototypes/mock-ups (mostly used with an Agile approach);
 
 #### 5.7.1 The context diagram
@@ -406,4 +406,4 @@ A different method to order the MoSCoW analyzed requirements opposed to the walk
 -   Reach is measured in the number of people (per month) using the requirement;
 -   Impact is the measured from 0 to 3;
 -   Confidence is measured from 0 to 1 or 0% to 100%;
--   Efoort is the number of weeks or days needed for the requirement to be developed;
+-   Effort is the number of weeks or days needed for the requirement to be developed;
