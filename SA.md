@@ -2,7 +2,7 @@
 
 ## 1. Types of architecture
 
-There are numerous types of architecture:
+There are numerous types of architectures:
 
 -   Infrastructure;
 -   Security;
@@ -11,7 +11,7 @@ There are numerous types of architecture:
 -   Solution;
 -   Etc.
 
-In this document we'll mostly focus on the architecture of applications. A few architects in application architecture are:
+In this document we'll mostly focus on the architecture of applications. Application architecture has a few architects to take note of:
 
 -   Enterprise architect (**organizational scope**):
 
@@ -19,10 +19,10 @@ In this document we'll mostly focus on the architecture of applications. A few a
     -   Enterprise IT planning;
     -   People processes and information to realize business goals;
     -   Is structured by 4 layers:
-        -   **Business**: Processes and activities use...;
-        -   **Data**: Data that must be collected, organized, safeguarded and distributed using...;
+        -   **Business**: Processes and activities use ...;
+        -   **Data**: Data that must be collected, organized, safeguarded and distributed using ...;
         -   **Application**: Applications such as custom or off-the-shelf software tools that run on ...;
-        -   **Technology**: Technology such as computer system and telephone networks;
+        -   **Technology**: Technology such as computer systems and telephone networks;
 
 -   Solutions architect (**organizational/project scope**):
     -   Focus on designing an overall solution for a client;
