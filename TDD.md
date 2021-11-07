@@ -380,7 +380,7 @@ Tests come in different forms which form the test pyramid:
 -   UI tests (a bit faster and a bit cheaper);
     -   Tests the system through the eyes of the user;
     -   Are fragile as small changes in the UI can break the test;
--   Intergration tests (fast and cheap):
+-   Integration tests (fast and cheap):
     -   Tests parts that have to work together such as the connection between code and database;
     -   Uses actual services such as an actual database connection;
     -   Code functionality is not being tested, just the code that calls the service;

@@ -20,7 +20,7 @@ In het centrum van informatiebeveiliging is information assurance: Het behouden 
 Een aanvaller zou dit kunnen schenden door bijvoorbeeld **Eavesdropping**:
 
 -   Aanvaller luistert passief mee met verkeer tussen partijen;
--   Ook wel Snooping, snuffing of wirtetapping genoemd;
+-   Ook wel Snooping, snuffing of wiretapping genoemd;
 -   Mogelijke oplossing: Encryptie (**HTTPS** bijvoorbeeld);
 
 #### 1.1.2 Integrity
@@ -243,7 +243,7 @@ stmt.values(name);
 ### 2.3 Cross-site scripting
 
 -   Aanval waarbij niet-vertrouwde data getoond wordt zonder verdere controle;
--   Lastiver te voorkomen den SQL injectection;
+-   Lastiger te voorkomen den SQL injection;
 -   Oorzaak: Gebruik van niet-vertrouwde data;
 
 Er zijn 2 varianten:

@@ -89,8 +89,6 @@ All of this results into requirements being made into implemantions. In other wo
 > Architecture represents the significant decisions that shape the system, where significance is measured by cost of change.
 >
 > -- <cite>Grady Booch</cite>
-> b
-> Martin Fowler has a broader vision of software architecture:
 
 -   Applications are a social construction:
     -   A body of code that's seen by developers as a single unit;
