@@ -6,7 +6,7 @@ Simply put: The purpose of software engineering is to find ways of building qual
 
 ## 1. The software process model definition
 
-To develop software we often use a software process model, aka a software life-cycle model. These mdels consist of a sequence of decisions:
+To develop software we often use a software process model, aka a software life-cycle model. These models consist of a sequence of decisions:
 
 -   The activities;
 -   The order;
@@ -75,7 +75,7 @@ This way you can start with a small piece of functionality and iterate on it, ev
 
 RUP has four phases which are repeated over and over which ultimately delivers a potentially shippable product incrament:
 
--   The inception phase:
+-   The **I**nception phase:
     -   Scope all the work, initial budget estimates are made;
     -   Align visions;
     -   Identify risks and global planning;
@@ -86,7 +86,7 @@ RUP has four phases which are repeated over and over which ultimately delivers a
         -   Use Case Model;
         -   Acceptance Plan;
         -   Global Software Development Plan (SDP);
--   The elaboration phase:
+-   The **E**laboration phase:
     -   Prove the technical feasibility and validate the architecture;
     -   Create a design/proof-of-concept;
     -   Produces the following artifacts:
@@ -95,12 +95,14 @@ RUP has four phases which are repeated over and over which ultimately delivers a
         -   SAD;
         -   Test plan;
         -   Development and testing environment;
--   The construction phase:
+-   The **C**onstruction phase:
     -   Focus on implementation;
     -   Do this in iterations/sprints;
--   The transition phase:
+-   The **T**ransition phase:
     -   Focus on the deployment;
     -   Hand the product over to maintenance;
+
+Keyword: **IECT**
 
 ## 4. Software process model: Agile
 
@@ -229,9 +231,9 @@ The Scrum framework produces a few artifacts:
 -   Product backlog:
     -   Prioritizes items on priority;
     -   Top items are small and detailed so they can be moved to the next sprint;
-    -   Bottom items are small and have few details, they need to be iterated on;
+    -   Bottom items are big and have few details, they need to be iterated on;
     -   As Agile is a **conversational approach** the product backlog items are refined through a series of conversations with stakeholders, the PO and developers;
-    -   The product backlog consists of users stories that presents a small use case in the form of a user story: "As a X, In want to Y, so that I Z";
+    -   The product backlog consists of users stories that presents a small use case in the form of a user story: "As a X, I want to Y, so that I can Z";
     -   Each item in the product backlog has a number of story points that indicate a certain complexity, represented by the Fibonacci sequence for example;
     -   Story point estimation is done using planning poker:
         -   Estimates are done by the people who're going to do the work, but all team members attend;
@@ -311,21 +313,23 @@ Issues during the requirements process are the most important ones to rectify.
 
 ### 5.5 The levels that requirements can have
 
--   **Business requirements**:
+-   **B**usiness requirements:
     -   Answer the why question;
     -   What an organization wants to accomplish with a certain system/product;
     -   Determines the scope and direction of the user requirements;
--   **User requirements**:
+-   **U**ser requirements:
     -   From the view of the user;
     -   Describes what is delivered to the user;
     -   In a language that the user understands;
--   **System requirements**:
+-   **S**ystem requirements:
     -   From the view of a developer:
         -   Technical solutions;
         -   Example: "Should comply with RFC 2131 (DHCP)";
         -   Example: "Authentication using LDAP";
     -   In a language that developers understand;
     -   Have a relation to one or more user requirements;
+
+Keyword: **BUS**
 
 ### 5.6 What a business rule is
 
@@ -401,7 +405,7 @@ A popular method to prioritize requirements is called MoSCoW:
 
 The MoSCoW analyzed requirements can then be grouped into smaller parts using the walking skeleton method. Requirements are ordered from high priority to low. Priority is determined by asking yourself: _"Is this requirement needed for the smaller system in order for it to work?"_
 
-A different method to order the MoSCoW analyzed requirements opposed to the walking skeleton method is the RICE method: **RICE = Reach _ Impact _ Confidence / Effort**.
+A different method to order the MoSCoW analyzed requirements opposed to the walking skeleton method is the RICE method: **RICE = Reach \* Impact \* Confidence / Effort**.
 
 -   Reach is measured in the number of people (per month) using the requirement;
 -   Impact is the measured from 0 to 3;
