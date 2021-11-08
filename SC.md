@@ -423,3 +423,149 @@ How to handle personal data:
 -   ...;
 
 ## 4. Access Control
+
+### 4.1 Authenticatie
+
+Wie ben je?
+
+HTTP is stateless, login informatie moet ergens worden opgeslagen: (sessie)cookies.
+
+#### 4.1.1 Registratie
+
+-   Altijd via HTTPS!;
+-   Gebruikersnaam, e-mail, wachtwoord;
+-   E-mailadres controleren;
+-   Automatische registratie voorkomen: CAPTCHA's (vrij zwak), timeouts, honeypotveld;
+-   Honeypotveld: Onzichtbaar veld voor de gebruiker dat, als het ingevuld wordt, de registratie als automatisch beschouwd en negeert;
+
+#### 4.1.2 Inloggen
+
+-   Altijd via HTTPS!;
+-   Geen aparte foutmeldingen voor fout in gebruikersnaam of wachtwoord;
+-   Niet obeperkt laten proberen om aanvallen tegen te gaan;
+-   Dit kan wel een **denail of service** attack mogelijk maken;
+-   Gebruikers opnieuw laten inloggen voor gevoelige operaties;
+
+#### 4.1.3 Hashing
+
+-   Wachtwoorden nooit opslaan als plaintext!;
+-   Wachtwoorden opslaan via one-wayfunctie, een hash;
+-   Hashes hebben standaard lengte, ongeacht lengte van het wachtwoord;
+-   Het wachtwoord kan in principe niet berekend worden uit de hash;
+-   Een wachtwoord kan wel vergeleken worden met een hash;
+-   Wachtwoorden ook bergelijken als gebruikersnaam fout is om **timing attacks** te voorkomen;
+
+Aanvallen op hashing:
+
+-   **Brute force attack**: Alle mogelijke wachtwoorden proberen;
+-   **Dictionary attack**: Meer waarschijnlijke wachtoorden eerst proberen;
+-   **Rainbow table**: Lijst met een wachtwoord voor elke mogelijke hash;
+
+Hashing verbeteren:
+
+-   Salt: Een willekeurige waarde die aan het wachtwoord wordt toegevoegd zodat gelijke wachtwoorden andere hashes krijgen;
+-   Pepper!;
+-   Iteraties: Veel hashalgoritmes kunnen langzamer gemaakt worden door meer iteraties van het algoritme uit te voeren, hierdoor wordt aanvallen lastiger;
+
+MD5 en SHA1:
+
+-   Message Digest Algorithm 5;
+-   Secure Hash Algorithm 1;
+-   Deze zijn beide te snel: Brute force attacks zijn relatief makkelijk uit te voeren;
+-   Secundair zijn er ook een aantal bekende collision attacks;
+-   Bottom line: MD5 en SHA1 zijn niet geschikt voor enige vorm van informatiebeveiliging;
+
+PBKDF2, bcrypt en scrypt:
+
+-   Password-based key derivation function;
+-   Ontworpen om lanzaam te zijn en nog langzamer door hoge iteration counts;
+-   PBKDF2 is makkelijk te implementeren in GPU's dus niet optimaal door wachtwoorden;
+-   Bcrypt is efficiënt te implementeren in custom hardware (FPGA) dus ook niet optimaal;
+-   Scrypt is nieuwer, dus misschien zitten er nog kwetsbaarheden in;
+
+Slim:
+
+-   Hash in wachtwoord opslaan;
+-   Wachtwoord met betere hash updaten zodra nieuwe uit is, wachtwoord migraten;
+-   PHP doet dit, voorbeeld!;
+
+### 4.1.4 Cookies
+
+-   Client side;
+
+### 4.1.5 Sessies
+
+-   Server side;
+
+### 4.2 Access control/Autorisatie
+
+Autorisatie:
+
+-   Wat mag de gebruiker;
+-   Afhankelijk van de gebruiker;
+-   Afhankelijk van de actie;
+-   Standaard hebben gebruikers geen rechten;
+-   Rechten kunnen afhankelijk zijn van externe factoren zoals locatie of tijd;
+
+Do's:
+
+-   Implementeer AC op een centraal punt;
+-   Zorg dat de regels voor access control flexibel zijn;
+-   Gebruik geen informatie uit een HTTP request;
+-   Zorg dat AC niet bestaat uit moeilijk te raden URL's;
+-   Wijzigingen in rechten moeten meteen worden doorgevoerd, niet pas bij de volgende login;
+
+Role based:
+
+-   Gebruikers hebben niet rechtstreeks rechten op objecten;
+-   Rollen hebben rechten op objecten;
+-   Gebruikers kunnen één of meer rollen hebben;
+-   Beperking: Rollen zijn globaal terwijl je in de praktijk echter vaak context-afhankelijke rollen wilt: Een gebruiker msg wel zijn eigen blogposts bewerken maar niet die van een ander;
+-   Beperking: Rollen controleren maakt aanpassen rechten lastig;
+
+Permission based:
+
+-   Controleer permissies in plaats van rollen;
+-   Permissies kunnen informatie over het object coderen, bijvoorbeeld de id van een blogpost;
+-   De permissies worden centraal gekoppeld aan de rollen;
+-   Bij het koppelen kan context meegenomen worden;
+
+### 4.3 Gegevensbeveiliging
+
+-   Gegevens kunnen in meerdere toestanden bestaan;
+-   ...;
+
+#### 4.3.1 Encryptie
+
+-   Gegevens versleutelen zodat deze alleen met een sleutel gelezen kunnen worden;
+-   Data at rest beveiligen zodat alleen bevoegde gebruikers dit kunnen lezen;
+-   Beveiligt tegen ongeautoriseerde toegang of diestal;
+-   Wetgeving zoals AVG kan dit verplicht stellen;
+
+#### 4.3.2 Cryptografisch ondertekenen
+
+-   Oorsprong van bericht controleren;
+-   Handtekening toevoegen: Versleutelde hash van bericht;
+-   Ontvanger kan hierdoor zien dat alleen de bezitter van de sleutels het bericht kon versturen;
+-   Een aanvaller kan zijn eigen bericht niet ondertekenen, maar wel een onderschept bericht opnieuw versturen (replay attack);
+
+#### 4.3.3 Symmetrische encryptie
+
+-   Dezelfde sleutel wordt gebruikt bij versleutelen en ontsleutelen;
+-   De sleutel moet geheim blijven;
+-   Caesar, Enigma, XOR, AES, DES, ...;
+-   Niet geschikt voor cryptografisch ondertekenen;
+
+#### 4.3.4 Assymetrische encryptie
+
+-   Verschillende sleutels voor versleutelen en ontsleutelen;
+-   Één sleutel is publiek, de andere sleutel is geheim (private);
+-   Publieke sleutel gebruiken voor versleutelen: Alleen de eigenaar van de geheime sleutel kan ontsleutelen;
+
+#### 4.3.5 Transport Layer Security (TLS)
+
+-   Protocol om data in transit te beveiligen, bijvoorbeld over HTTP(S);
+-   Opvolger van Secure Socket Layer (SSL);
+-   Meedere versies: Gebruik minimaal TLS 1.1;
+-   Verbinding is veilig omdat de inhoud versleuteld wordt;
+-   De identiteit van de verzender is bekend omdat het beriht ondertekend wordt;
