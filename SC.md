@@ -322,4 +322,104 @@ Een andere oplossing is een challenge/response pattern:
 -   Webwinkels gebruiken dit wel: Je kan met je opgeslagen sessie wel rondkijken en je winkelwagentje vullen, maar bij het bestellen heb je je wachtwoord nodig;
 -   Voorkomt CSRF omdat de authenticatie altijd expliciet door de gebruiker gedaan moet worden;
 
-## 3. Access Control
+## 3. Secure software development (gastcollege)
+
+### 3.1 OWASP
+
+Open Web Application Security Project, contains:
+
+-   Top 10 risks:
+    -   **A01:2021-Broken Access Control:**
+        -   Get access to resources by manipulating input;
+        -   Do's:
+            -   Central authentication mechanisms;
+            -   Disable unauthenticated access to any resource;
+    -   **A02:2021-Cryptographic Failures:**
+        -   Get access to data because it is not encrypted in transit and/or rest;
+        -   Do's:
+            -   Encrypt transport of data (HTTPS, secure mail, ...);
+            -   Not use weak crypto keys such as SHA1;
+            -   Use a salt to encrypt stored passwords;
+            -   Do not put sensitive data in caches;
+    -   **A3:2021-Injection:**
+        -   Get access to resources by manipulating unput;
+        -   Do's:
+            -   Don't ever use an un-sanitized user input in any command/query;
+            -   Ensure running with least privilige;
+            -   Set httpOnly flag to cookies to prevent stealing it from scripts;
+            -   Proper escape (untrusted input) data in the oytput (XSS);
+    -   **A4:2021-Insecure Design:**
+        -   Missing or ineffective control design;
+        -   Do's:
+            -   Thread modeling;
+            -   Secure Software Development Lifecycle (SSDLC);
+            -   Consider leveraging the OWASP Software Assurance Maturity Model (SAMM);
+    -   **A5:2021-Security Misconfiguration:**
+        -   Don'ts:
+            -   Unnecessary features are enabled or installed (e.g., ports, services, pages, accounts or privileges);
+            -   Default accounts and their passwords are still enabled and unchanged;
+            -   Copy code from internet without thinking;
+        -   Do's:
+            -   Prevent any manual installation actions;
+            -   Use layering in the infrastructure;
+            -   Implement monitoring and alerting;
+    -   **A6:2021-Vulnerable and Outdated Components:**
+        -   Get access to resources by exploiting vulnerabilities;
+        -   Do's:
+            -   Subscribe to security bullitins;
+            -   Constant patching of all components;
+            -   Remove unused dependencies;
+            -   Obtain components from trusted sources;
+            -   Monitoring and alerting;
+    -   **A7:2021-Identification and Authentiation Failures:**
+        -   Get access to resources by guessing/stealing passwords or stealing sessions;
+        -   Do's:
+            -   Multifactor login;
+            -   Sessions should expire;
+            -   Passwords should be properly encrypted;
+            -   Prevent brute force;
+    -   **A8:2021-Software and Data integrity failures:**
+        -   An insecure CI/CD pipeline can introduce the potential for unauthorized access, malicious code or system compromise;
+        -   Do's:
+            -   Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered;
+            -   Ensure libraries and dependencies, such as npm or Maven, are consuming trusted repositories;
+            -   Ensure that there is a review process for code and configuration changes;
+            -   Ensure that your CI/CD pipeline has proper segregation, configuration and access control;
+    -   **A9:2021-Security Logging and Monitorying Failures**:
+        -   Get time to hack because no alarm bells are rining (on time);
+        -   Do's:
+            -   Ensure all user actions to high value information is audited;
+            -   Ensure effective monitoring and alerting is in place of suspicious activities;
+            -   Establish an incident response and recovery plan;
+    -   **A10:2021-Service Side Request Forgery (SSRF)**;
+-   ASVS (Application Security Verification Standard Project);
+-   Cheat sheets;
+-   Test scenario's;
+-   Presentations and examples;
+
+### 3.2 GDPR
+
+Sanctions:
+
+-   A warning in writing incases of first and or non-intentional non-compiance;
+-   Regular periodic data protection audits;
+-   For small infringement: A fine up to 10M EUR or u to 2% or the annual income;
+-   ...;
+
+What is defined as personal data?: Personal data is defined as any information relating to an identified or identifiable natural person.
+
+Rules:
+
+-   Transparency: You have to expain in an understandable way how the data is collected and processed;
+-   Data transfer: Citizens can transfer their data from one service provider to another;
+-   Right to be forgotten: When a person asks your company to delete the personal data, you are obliged to do so;
+-   Reporting duty: Is there a data breach? You're obliged to report this within 72 hours, unless you can prove that it does not endanger the personal data;
+
+How to handle personal data:
+
+-   Only store data that is needed;
+-   Use technical keys for correlations;
+-   Never use production data for testing;
+-   ...;
+
+## 4. Access Control
