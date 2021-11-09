@@ -160,7 +160,7 @@ Creating a SAD has its challenges:
 -   You have to explain "why" and "so what" as well as just "what";
 -   At what point does the SAD become a design? Does that matter?;
 
-In order to cover these challenges a checklist is available:
+In order to cover these challenges you must include multiple abstraction layers. A checklist is available (R&W):
 
 -   [ x ] Are all requirements documented?;
 -   [ x ] Are all key architectural decisions documented?;
@@ -171,7 +171,7 @@ In order to cover these challenges a checklist is available:
 -   [ x ] Have you provided a glossary of terms?;
 -   [ x ] Are there any issues requiring management attention?;
 
-## 8. Viewpoints, views and viewpoint sets
+## 8. Views and viewpoints
 
 Archictecture is about defining structures, not one, but many!:
 
@@ -189,7 +189,7 @@ An example of viewpoints would be the different views of a house as it's built:
 
 A view is a representation of the whole system, as seen by specific stakeholders who have specific concerns. By using multiple views we can explain to the different stakeholders how their concerns are met. Therefore views solve the problem that it is not possible to capture all the functional features (and quality properties) in a single model;
 
-One view consists of one or more viewpoints/models (diagrams, most common: UML) that represent it.
+One view, also known as viewpoint set, consists of one or more viewpoints/models (diagrams, most common: UML) that represent it.
 
 A viewpoint set consists of multiple views. There are many standard viewpoint sets, a few of which are listed here:
 
@@ -202,16 +202,76 @@ A viewpoint set consists of multiple views. There are many standard viewpoint se
 
 This document will further explain RUP 4+1 and Rozanski & Woods (which is an extension of RUP 4+1).
 
-### 8.1 C4 Model
+### 8.1 Architectural models
 
-A viewpoint can be described as any of the 4 zoom levels:
+A model is an abstract, simplified or partial representation of some aspects of an architecture. The purpose of a model is communicatie key structural or behavioral elements of the architecture to one or more stakeholders. A good model is just good enough to achieve the purpose for which you have created it.
 
--   Context: Describes the context of the application, typically by using a context diagram (so not UML);
--   Container: An independent runnable/deployable part of the application. Documents the major technologies used and how the containers communicate;
--   Component: Describes the components inside a container and what each of those components are, their responsibilities and the technology/implementation details;
--   Code: Describes the code structure inside a component. Typically using class, sequence or activity diagrams;
+We mostly use sketches as, qualititve, models: Informal graphic diagrams. Stakeholders don't like to use quantitative models with a lot of data in them.
 
-### 8.2 RUP 4+1 viewpoint set
+A modeling specification often used to create views is called UML, which stands for Unified Modeling Language:
+
+-   As sketch:
+    -   Informal;
+    -   Focus on main aspects;
+    -   Whiteboard or paper;
+-   As design:
+    -   As a blueprint for developers;
+    -   Completeness and unambiguousness are impotent, a lot of details;
+    -   Use of specialized CASE tools;
+-   As a programming language:
+    -   Generate code from a CASE tool;
+    -   MDA: Model Driven Architecture;
+
+There are 2 kinds of UML diagrams:
+
+-   Structural diagram: Structure only, time playes no role.
+    -   Profile digram;
+    -   Class diagram;
+    -   Composite structure diagram;
+    -   Component diagram;
+    -   Deployment diagram;
+    -   Object diagram;
+    -   Package diagram;
+-   Behavior diagram: Time plays a role.
+    -   Activity diagram;
+    -   Interaction diagram:
+        -   Sequence diagram;
+        -   Communication diagram;
+        -   Interaction overview diagram;
+        -   Timing diagram;
+    -   Use case diagram: Exception, time playes no role here;
+    -   State machine diagram;
+
+These diagrams give answers to the following questions:
+
+-   Which modules and interfaces does the application consist of?
+-   What dependencies does component X have?
+-   Are there layers within the modules?
+-   Are there threads or processes that need to be synchronized?
+-   How are the data-entities related?
+-   How are the modules and interfaces implemented, by what means?
+-   On what hardware is the application deployed and what does the deployment environmentlook like?
+
+### 8.2 C4 model
+
+A viewpoint can be described as any of the 4 abstraction levels:
+
+-   Context (level 1):
+    -   Describes the context of the application: Web app, mobile app, database, file system;
+    -   Typically by using a context diagram (so not UML);
+    -   Explains interactions between different actors;
+-   Container (level 2):
+    -   An independent runnable/deployable part of the application.
+    -   Documents the major technologies used and how the containers communicate;
+-   Component (level 3):
+    -   Describes the components inside a container and what each of those components are, their responsibilities and the technology/implementation details;
+-   Code (level 4):
+    -   Describes the code structure inside a component.
+    -   Typically using class, sequence or activity diagrams;
+
+Keyword: **C4**
+
+### 8.3 RUP/Kruchten 4+1 viewpoint set
 
 |                   |                        |                          |
 | ----------------- | ---------------------- | ------------------------ |
@@ -226,7 +286,16 @@ RUP 4+1 consists of 4 viewpoints + the **Use-Case Viewpoint**. The Use-Case View
 
 With the Use-Case Viewpoint as the base we can build upon this using the other 4 viewpoints. The first being the Logical Viewpoint.
 
-#### 8.2.1 Logical Viewpoint
+Keyword: **LPDIU**
+
+#### 8.3.2 Use-Case Viewpoint
+
+Describes key functional scenarios, use cases, that drive the discovery, design and valdiation of the architecture using:
+
+-   Use Case diagrams;
+-   Use Case descriptions;
+
+#### 8.3.2 Logical Viewpoint
 
 The Logical Viewpoint:
 
@@ -249,9 +318,9 @@ Logical differs from physical architecture:
 -   Logical architecture: Abstract representation of components and their relations, without further specifying implementation, technology or enviroment;
 -   Physical architecture: Gives enough detail to decide what's the best technology (software, hardware, network) and may refer to implementation as well as deployment;
 
-#### 8.2.2 Implementation Viewpoint
+#### 8.3.3 Implementation Viewpoint
 
-The Implementation Viewpoint describves the organization of the software modules and implementation details:
+The Implementation Viewpoint describes the organization of the software modules and implementation details:
 
 -   Concerns of developers and testers;
 -   Organization of source code, package diagrams;
@@ -260,7 +329,7 @@ The Implementation Viewpoint describves the organization of the software modules
 -   Database engine, file structure;
 -   Middleware;
 
-#### 8.2.3 Process Viewpoint
+#### 8.3.4 Process Viewpoint
 
 The Process Viewpoint is one of the least used viewpoints. It describes:
 
@@ -276,7 +345,7 @@ The Process Viewpoint is visualized using any of the following diagrams:
 -   Sequence diagram;
 -   State diagram;
 
-#### 8.2.4 Deployment Viewpoint
+#### 8.3.5 Deployment Viewpoint
 
 The Deployment Viewpoint shows how the run-time entities are mapped on the execution platform. It maps the deployable components onto machines/processors. These deployable components can be any of the following:
 
@@ -286,7 +355,9 @@ The Deployment Viewpoint shows how the run-time entities are mapped on the execu
 -   Disk storage;
 -   ...
 
-### 8.3 Rozanski & Woods (R&W) viewpoint set
+### 8.4 Rozanski & Woods (R&W) viewpoint set
+
+The Rozanski & Woods viewpoint set is an expansion of the RUP 4+1 viewpoint set.
 
 First, we map our previously discussed jargon:
 
@@ -295,11 +366,11 @@ First, we map our previously discussed jargon:
 | Use Case Viewpoint       | Context Viewpoint           |
 | Process Viewpoint        | Concurrency Viewpoint       |
 | Implementation Viewpoint | Development Viewpoint       |
-| Doployment Viewpoint     | Deployment Viewpoint        |
+| Deployment Viewpoint     | Deployment Viewpoint        |
 |                          | (NEW) Information Viewpoint |
 |                          | (NEW) Operational Viewpoint |
 
-### 8.3.1 Context Viewpoint
+### 8.4.1 Context Viewpoint
 
 The Context Viewpoint maps relationships, dependencies and interactions between the system and its environment. It does so using any of the following diagrams:
 
@@ -308,7 +379,7 @@ The Context Viewpoint maps relationships, dependencies and interactions between 
 -   Use case diagram;
 -   User stories;
 
-### 8.3.2 Information Viewpoint
+### 8.4.2 Information Viewpoint
 
 The Information Viewpoint maps the way that the architecture stores, manipulates, manages and distributes information. It should answer questions around content, structure, ownership, transcation, latency, references and data migration. It also answers the following questions pertaining to data:
 
@@ -318,7 +389,7 @@ The Information Viewpoint maps the way that the architecture stores, manipulates
 
 It does all of this using an Information Flow Diagram, Entity Relation Diagram or a DFD.
 
-### 8.3.3 Operational Viewpoint
+### 8.4.3 Operational Viewpoint
 
 The Operational Viewpoint maps how the system will be operated, administered and supported in its production environment. It maps how to:
 
