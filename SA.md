@@ -288,7 +288,7 @@ With the Use-Case Viewpoint as the base we can build upon this using the other 4
 
 Keyword: **LPDIU**
 
-#### 8.3.2 Use-Case Viewpoint
+#### 8.3.1 Use-Case Viewpoint
 
 Describes key functional scenarios, use cases, that drive the discovery, design and valdiation of the architecture using:
 
@@ -370,7 +370,7 @@ First, we map our previously discussed jargon:
 |                          | (NEW) Information Viewpoint |
 |                          | (NEW) Operational Viewpoint |
 
-### 8.4.1 Context Viewpoint
+#### 8.4.1 Context Viewpoint
 
 The Context Viewpoint maps relationships, dependencies and interactions between the system and its environment. It does so using any of the following diagrams:
 
@@ -379,7 +379,7 @@ The Context Viewpoint maps relationships, dependencies and interactions between 
 -   Use case diagram;
 -   User stories;
 
-### 8.4.2 Information Viewpoint
+#### 8.4.2 Information Viewpoint
 
 The Information Viewpoint maps the way that the architecture stores, manipulates, manages and distributes information. It should answer questions around content, structure, ownership, transcation, latency, references and data migration. It also answers the following questions pertaining to data:
 
@@ -389,7 +389,7 @@ The Information Viewpoint maps the way that the architecture stores, manipulates
 
 It does all of this using an Information Flow Diagram, Entity Relation Diagram or a DFD.
 
-### 8.4.3 Operational Viewpoint
+#### 8.4.3 Operational Viewpoint
 
 The Operational Viewpoint maps how the system will be operated, administered and supported in its production environment. It maps how to:
 
@@ -400,3 +400,118 @@ The Operational Viewpoint maps how the system will be operated, administered and
     -   Performance monitoring;
 -   Respond to problems using a support model;
 -   Install configuration and management;
+
+## 9. Architectural perspectives/quality properties
+
+Rozansky & Woods studied many architectures & project cases leading to a systematic approach for defining an architecture: A set of structures (views) and quality properties (perspectives). With this definition a set of guidelines and best practices was created.
+
+Views explain what the system has to do (**functional requirements**). Perspectives define how the system has to do it (**non-functional requirements**). These quality properties are standardized:
+
+-   Functional suitability;
+-   Performance efficiency;
+-   Compatibility;
+-   Usability;
+-   Reliability;
+-   Security;
+-   Maintainability;
+-   Portability;
+
+Non-functional requirements are difficult to test. They often have little attention but are crucial to stakeholders:
+
+-   Slow functions don't get used;
+-   Unavailable systems cause business interruption;
+-   Security problems cause headlines;
+-   Unmaintainable systems become irrelevant;
+
+Perspectives are a collection of patterns, templates and guidelines to ensure the system has the right quality properties:
+
+-   A framework based on knowledge and experience;
+-   A guide to the architect;
+
+The Rozansky & Woods core set are the most important quality qualities:
+
+-   Performance and scalability;
+-   Security;
+-   Availability and Resilience;
+-   Evolution;
+
+Perspectives are described as followed:
+
+-   **Desired quality**: Definition;
+-   **Applicability** to views: Which of your views are most likely to be impacted by applying the perspective;
+-   **Concerns**: Thtat the perspective addresses;
+-   **Activities**: How to apply the perspective to your architecture;
+-   **Problems and pitfalls**: To be aware of;
+
+You apply perspectives to the architecture to ensure quality properties are acceptable and guide its development.
+
+### 9.1 Tactics
+
+An architectural tactic is an established approach or solution you can use to achieve a particular quality property:
+
+-   Redundancy increases availability;
+-   Asynchronous processing increases performance;
+-   Granting the least amount of privilige increases security;
+
+How to apply tactics:
+
+-   Identify the relevant risks;
+-   Evaluate pros and cons for implementing the key drivers;
+-   Evaluate their co-operation (contradiction?);
+-   Make design decisions;
+
+### 9.2 The Rozansky & Woods Core perspectives
+
+This chapter is about the core perspectives/quality properties mentioned above.
+
+-   Performance and scalability:
+    -   Concerns: Response time, throughput, scalability, predictability, hardware resource requirements and peak load behaviour;
+    -   Activities:
+        -   Capture the performance requirements: For example, response times, throughput and scalability;
+        -   Create performance models:
+            -   What are the key performance metrics?
+            -   What are the performance bottlenecks?
+            -   Models: Calculations, statistics, simulations;
+        -   Analyze these models: Collect performance data;
+        -   Conduct practical testing;
+        -   Assess against the requirements;
+        -   Rework architecture;
+-   Security:
+    -   Concerns: Resources, principals, policies, threats, confidentiality, integrity, availability, accountability, detection, recovery and security mechanisms;
+    -   Activities:
+        -   Identify sensitive resources: For example, data in the database;
+        -   Define the security policy (ACP: Access Plan): Who will be trusted, with what access to the system resources;
+        -   Identify security threats:
+            -   Operators stealing backups;
+            -   Admins querying data, seeing names;
+            -   Bribing investigating officers;
+            -   Internal attack on the database via network;
+        -   Design the security implementation:
+            -   Backups: Encrypt data in the database;
+            -   Bribery: Add audit trail for data access;
+            -   Network attacks: Harden database, firewall, IDS;
+            -   Consequences: More complexity, bad for performance and more operational costs;
+        -   Assess the security risks;
+-   Availability and Resilience:
+    -   Concerns: Classes of service, planned unplanned downtime, MTBF (Mean Time Between Failure), MTTR (Mean Time To Repair), disaster recovery;
+    -   Activities:
+        -   Capture the availability requirements;
+        -   Produce the availability schedule;
+        -   Estimate platform and functional availability;
+        -   Assess against the requirements;
+        -   Rework architecture;
+-   Evolution:
+    -   Concerns: Product management, maginitude of change, dimensions of change, likelihood of change, timescale for change, development of complexity, preservation of knowledge, reliability of change;
+    -   Activities:
+        -   Characterize the evolution needs;
+        -   Assess the current ease of evolution;
+        -   Consider evolution tradeoffs;
+        -   Rework the architecture;
+
+### 9.3 Applying perspectives to views
+
+Which perspectives would help you to achieve your quality properties?
+
+**Architectural tactic**: An established approach or solution you can use to achieve a particular quality property;
+
+**Architectural pattern (or style)**: Often implements multiple architectural tactics, usually related to different qualities in a coherent way. Think of design patterns such as MVC;
