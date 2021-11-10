@@ -85,7 +85,7 @@ All tests should always run as this lessens the regression mistakes. The couplin
     -   Mocks are, most of the time, instantiations from a subclass;
     -   Not all subclasses have to be tested when the superclass is used;
 -   **I**nterface Segregation Principle:
-    -   Every interface only holds the minimally required amount of methods to fulfill it's function;
+    -   Every interface only holds the minimally required amount of methods to fulfill its function;
     -   Creating mocks is easier, there are not as many methods to keep in mind;
 -   **D**ependency Inversion Principle:
     -   High-level modules are not dependant on low-level modules; Both are dependant on abstractions;
@@ -153,7 +153,7 @@ public class Example {
 
 Attributes of the Dependency injection pattern
 
--   The dependancies are made explicit;
+-   The dependencies are made explicit;
 -   The responsibility for creating the dependencies are outside of the class using them;
 -   Constructor injection: Dependencies are passed into the constructor;
 -   Setter injection: Dependencies are passed into the setters;
@@ -320,14 +320,14 @@ The process goes as follows:
     -   Builds;
     -   Tests;
     -   Either fails or succeeds;
--   The Continuous Intergration Server notifies the manager and a couple of developers of the succes or server;
+-   The Continuous Intergration Server notifies the manager and a couple of developers of the succes or fail;
 
 Locally, changes should also be tested:
 
 -   Commit locally;
 -   Test locally;
 -   Push to the VCS;
--   Wait intull the CIS checked the build;
+-   Wait untill the CIS checked the build;
 -   Fix issues as they arise;
 
 Continuous Intergration only works when the following guidelines are followed:
@@ -400,7 +400,7 @@ A BDD test looks like the following:
 
 -   Narrative: "In order to ..., as a ..., I want to ...";
 -   Scenario's: "Given ..., when ..., then ...";
--   Scenario'sserve as the acceptance criteria for the narrative;
+-   Scenario's serve as the acceptance criteria for the narrative;
 -   "Given" defines the precondition (arrange);
 -   "When" defines the actions (act);
 -   "Then" defines the expectations (assert);

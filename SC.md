@@ -453,7 +453,7 @@ HTTP is stateless, login informatie moet ergens worden opgeslagen: (sessie)cooki
 -   Hashes hebben standaard lengte, ongeacht lengte van het wachtwoord;
 -   Het wachtwoord kan in principe niet berekend worden uit de hash;
 -   Een wachtwoord kan wel vergeleken worden met een hash;
--   Wachtwoorden ook bergelijken als gebruikersnaam fout is om **timing attacks** te voorkomen;
+-   Wachtwoorden ook vergelijken als gebruikersnaam fout is om **timing attacks** te voorkomen;
 
 Aanvallen op hashing:
 

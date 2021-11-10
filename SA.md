@@ -173,7 +173,7 @@ In order to cover these challenges you must include multiple abstraction layers.
 
 ## 8. Views and viewpoints
 
-Archictecture is about defining structures, not one, but many!:
+Architecture is about defining structures, not one, but many!:
 
 -   Functional structure: How does the application work?;
 -   Information structure: How does information flow through the application?;
@@ -191,7 +191,7 @@ A view is a representation of the whole system, as seen by specific stakeholders
 
 One view, also known as viewpoint set, consists of one or more viewpoints/models (diagrams, most common: UML) that represent it.
 
-A viewpoint set consists of multiple views. There are many standard viewpoint sets, a few of which are listed here:
+A viewpoint set consists of multiple viewpoints. There are many standard viewpoint sets, a few of which are listed here:
 
 -   RUP 4+1;
 -   Rozanski & Woods (R&W);
